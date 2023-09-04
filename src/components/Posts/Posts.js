@@ -1,30 +1,25 @@
-import {Fragment} from "react"
+import classes from "../Posts/Posts.module.css"
+import PostItem from "./PostItem"
 
-const DUMMY_POSTS = [
-  {
-    id: "p1",
-    description: "Chilling & killing"
-  },
-  {
-    id: "p2",
-    description: "Best day of my life"
-  },
-  {
-    id: "p3",
-    description: "love my mama <3"
-  },
-  {
-    id: "p4",
-    description: "another day another..."
-  }
-]
+// for each post we will generate a costume component - postItem - all will have the same object structure
 
-const Posts = () => {
-  // const postsList = DUMMY_POSTS.map((post) => (
-  //   <PostItem key={post.id} id={post.id} description={post.description} />
-  // ))
+const Posts = (props) => {
+  const postsList = props.posts.map((post) => (
+    <PostItem
+      onDeletePost={() => {
+        props.onDeletePost(post.id)
+      }}
+      key={post.id}
+      id={post.id}
+      caption={post.caption}
+    />
+  ))
 
-  return <div>{/* <ul>{postsList}</ul> */}</div>
+  return (
+    <section className={classes.posts}>
+      <ul>{postsList}</ul>
+    </section>
+  )
 }
 
 export default Posts
