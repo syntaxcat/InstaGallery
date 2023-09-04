@@ -1,0 +1,8 @@
+.posts {
+    border: 1px solid black;
+    display: flex;
+}
+
+ul {
+    list-style: none;
+}
