@@ -1,10 +1,8 @@
 .card {
     border-radius: 50%;
     border: 1px solid black;
+    overflow: hidden;
     width: 15rem;
     height: 15rem;
 }
 
-/* .profileImg {
-    object-fit: cover;
-} */
