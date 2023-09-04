@@ -1,9 +1,19 @@
+import {Fragment} from "react"
+
+import Header from "./components/Layout/Header"
+import Posts from "./components/Posts/Posts"
+
 function App() {
+  const AddPostHandler = (event) => {}
   return (
-    <div>
-      <h2>Let's get started!</h2>
-    </div>
-  );
+    <Fragment>
+      <Header />
+      <main>
+        <Posts />
+      </main>
+      <button onClick={AddPostHandler}>+ Add Post</button>
+    </Fragment>
+  )
 }
 
-export default App;
+export default App
