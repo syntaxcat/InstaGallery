@@ -36,7 +36,6 @@ function App() {
   }
 
   const deletePostHandler = (id) => {
-    console.log("FROM APP", id)
     const newPosts = posts.filter((post) => post.id !== id)
     setPosts(newPosts)
   }

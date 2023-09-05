@@ -56,13 +56,10 @@ const ProfilePage = () => {
   const [modalIsShown, setModalIsShown] = useState(false)
 
   let {userId} = useParams()
-  console.log(userId)
 
   const foundProfile = DUMMY_PROFILES.find((profile) => {
     return profile.userName === userId
   })
-
-  console.log(foundProfile)
 
   const addPostHandler = (caption) => {
     const newPost = {
@@ -76,7 +73,6 @@ const ProfilePage = () => {
   }
 
   const deletePostHandler = (id) => {
-    console.log("FROM APP", id)
     const newPosts = posts.filter((post) => post.id !== id)
     setPosts(newPosts)
   }
