@@ -11,7 +11,7 @@ const Header = (props) => {
       <Card>
         <Image userImage={profileImage} />
       </Card>
-      <h1>{name}</h1>
+      <h1 className={classes.userName}>{name}</h1>
     </header>
   )
 }
