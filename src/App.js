@@ -3,6 +3,8 @@ import {Fragment, useState} from "react"
 import Header from "./components/Layout/Header"
 import Posts from "./components/Posts/Posts"
 import PostForm from "./components/Posts/PostForm"
+import Modal from "./components/UI/Modal"
+import OpenModalButton from "./components/UI/OpenModalButton"
 
 const DUMMY_POSTS = [
   {
@@ -25,6 +27,8 @@ const DUMMY_POSTS = [
 
 function App() {
   const [posts, setPosts] = useState(DUMMY_POSTS)
+  const [modalIsShown, setModalIsShown] = useState(false)
+
   const addPostHandler = (caption) => {
     const newPost = {
       id: DUMMY_POSTS.length + 1,
@@ -33,6 +37,7 @@ function App() {
     setPosts((currentPosts) => {
       return [newPost, ...currentPosts]
     })
+    setModalIsShown(false)
   }
 
   const deletePostHandler = (id) => {
@@ -41,10 +46,23 @@ function App() {
     setPosts(newPosts)
   }
 
+  const showModalHandler = () => {
+    setModalIsShown(true)
+  }
+
+  const hideModalHandler = () => {
+    setModalIsShown(false)
+  }
+
   return (
     <Fragment>
       <Header />
-      <PostForm onAddPost={addPostHandler} />
+      <OpenModalButton onShowModal={showModalHandler} />
+      {modalIsShown && (
+        <Modal onHideModal={hideModalHandler}>
+          <PostForm onAddPost={addPostHandler} />
+        </Modal>
+      )}
       <main>
         <Posts onDeletePost={deletePostHandler} posts={posts} />
       </main>
