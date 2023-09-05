@@ -5,12 +5,13 @@ import Card from "../UI/Card"
 import Image from "../UI/Image"
 
 const Header = (props) => {
+  const {profileImage, name} = props.foundProfile
   return (
     <header className={classes.header}>
       <Card>
-        <Image />
+        <Image userImage={profileImage} />
       </Card>
-      <h1>Michaela Voronov</h1>
+      <h1>{name}</h1>
     </header>
   )
 }

@@ -1,9 +1,36 @@
 import {Fragment, useState} from "react"
+import {useParams} from "react-router-dom"
 import Header from "../Layout/Header"
 import OpenModalButton from "../UI/OpenModalButton"
 import Modal from "../UI/Modal"
 import PostForm from "../Posts/PostForm"
 import Posts from "../Posts/Posts"
+import MaxAvatar from "../../assets/Max_mochi_avatar.jpeg"
+import MichaelaAvatar from "../../assets/Michaela_mochi_avatar.jpeg"
+import PukiAvatar from "../../assets/Puki_avatar.avif"
+import MukiAvatar from "../../assets/Muki_avatar.jpeg"
+
+const DUMMY_PROFILES = [
+  {id: "u1", name: "Max Voronov", profileImage: MaxAvatar, userName: "red"},
+  {
+    id: "u2",
+    name: "Michaela Voronov",
+    profileImage: MichaelaAvatar,
+    userName: "syntaxcat"
+  },
+  {
+    id: "u3",
+    name: "Puki Ben-Puki",
+    profileImage: PukiAvatar,
+    userName: "poopoo"
+  },
+  {
+    id: "u4",
+    name: "Muki Ben-Muki",
+    profileImage: MukiAvatar,
+    userName: "muuumooo"
+  }
+]
 
 const DUMMY_POSTS = [
   {
@@ -27,6 +54,15 @@ const DUMMY_POSTS = [
 const ProfilePage = () => {
   const [posts, setPosts] = useState(DUMMY_POSTS)
   const [modalIsShown, setModalIsShown] = useState(false)
+
+  let {userId} = useParams()
+  console.log(userId)
+
+  const foundProfile = DUMMY_PROFILES.find((profile) => {
+    return profile.userName === userId
+  })
+
+  console.log(foundProfile)
 
   const addPostHandler = (caption) => {
     const newPost = {
@@ -65,7 +101,7 @@ const ProfilePage = () => {
   }
   return (
     <Fragment>
-      <Header />
+      <Header foundProfile={foundProfile} />
       <OpenModalButton onShowModal={showModalHandler} />
       {modalIsShown && (
         <Modal onHideModal={hideModalHandler}>
