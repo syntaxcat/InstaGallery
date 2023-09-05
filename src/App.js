@@ -54,6 +54,17 @@ function App() {
     setModalIsShown(false)
   }
 
+  const updatedPostHandler = (caption, postId) => {
+    const newPosts = posts.map((post) => {
+      if (post.id === postId) {
+        return {...post, caption}
+      } else {
+        return post
+      }
+    })
+    setPosts(newPosts)
+  }
+
   return (
     <Fragment>
       <Header />
@@ -64,7 +75,11 @@ function App() {
         </Modal>
       )}
       <main>
-        <Posts onDeletePost={deletePostHandler} posts={posts} />
+        <Posts
+          onUpdatedPost={updatedPostHandler}
+          onDeletePost={deletePostHandler}
+          posts={posts}
+        />
       </main>
     </Fragment>
   )

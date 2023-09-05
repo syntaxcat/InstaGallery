@@ -6,6 +6,9 @@ import PostItem from "./PostItem"
 const Posts = (props) => {
   const postsList = props.posts.map((post) => (
     <PostItem
+      onEditPost={(caption) => {
+        props.onUpdatedPost(caption, post.id)
+      }}
       onDeletePost={() => {
         props.onDeletePost(post.id)
       }}
