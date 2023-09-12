@@ -11,7 +11,7 @@ const PostItem = (props) => {
   }
   return (
     <li className={classes.post}>
-      <div>post image goes here</div>
+      <img className={classes.postImage} src="https://picsum.photos/300/300" />
       {isEditing ? (
         <EditPostItem
           caption={props.caption}

@@ -1,3 +1,7 @@
 .post {
   border: 1px solid black;
 }
+
+.postImage {
+  width: 100%;
+}
