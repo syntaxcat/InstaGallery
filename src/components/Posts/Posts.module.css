@@ -10,4 +10,6 @@ ul {
   width: 100%;
   margin: 0;
   padding: 10px;
+  gap: 4px;
+  margin-top: 2rem;
 }

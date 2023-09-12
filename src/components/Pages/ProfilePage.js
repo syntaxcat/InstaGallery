@@ -1,5 +1,6 @@
 import {Fragment, useState} from "react"
 import {useParams} from "react-router-dom"
+import classes from "./ProfilePage.module.css"
 import Header from "../Layout/Header"
 import OpenModalButton from "../UI/OpenModalButton"
 import Modal from "../UI/Modal"
@@ -16,6 +17,7 @@ const DUMMY_PROFILES = [
     name: "Max Voronov",
     profileImage: MaxAvatar,
     userName: "red",
+    bio: "blablabla",
     posts: [
       {
         id: "p1",
@@ -40,6 +42,7 @@ const DUMMY_PROFILES = [
     name: "Michaela Voronov",
     profileImage: MichaelaAvatar,
     userName: "syntaxcat",
+    bio: "blablabla1111",
     posts: [
       {
         id: "p1",
@@ -64,6 +67,7 @@ const DUMMY_PROFILES = [
     name: "Puki Ben-Puki",
     profileImage: PukiAvatar,
     userName: "poopoo",
+    bio: "blablabla4545",
     posts: [
       {
         id: "p1",
@@ -88,6 +92,7 @@ const DUMMY_PROFILES = [
     name: "Muki Ben-Muki",
     profileImage: MukiAvatar,
     userName: "muuumooo",
+    bio: "blablabla333",
     posts: [
       {
         id: "p1",
@@ -155,22 +160,21 @@ const ProfilePage = () => {
     setPosts(newPosts)
   }
   return (
-    <Fragment>
-      <Header foundProfile={foundProfile} />
+    <div className={classes.profilePageSize}>
+      <Header postsCount={posts.length} foundProfile={foundProfile} />
       <OpenModalButton onShowModal={showModalHandler} />
       {modalIsShown && (
         <Modal onHideModal={hideModalHandler}>
           <PostForm onAddPost={addPostHandler} />
         </Modal>
       )}
-      <main>
-        <Posts
-          onUpdatedPost={updatedPostHandler}
-          onDeletePost={deletePostHandler}
-          posts={posts}
-        />
-      </main>
-    </Fragment>
+
+      <Posts
+        onUpdatedPost={updatedPostHandler}
+        onDeletePost={deletePostHandler}
+        posts={posts}
+      />
+    </div>
   )
 }
 
