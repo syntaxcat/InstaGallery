@@ -1,8 +1,6 @@
 import classes from "../Posts/Posts.module.css"
 import PostItem from "./PostItem"
 
-// for each post we will generate a costume component - postItem - all will have the same object structure
-
 const Posts = (props) => {
   const postsList = props.posts.map((post) => (
     <PostItem

@@ -11,48 +11,105 @@ import PukiAvatar from "../../assets/Puki_avatar.avif"
 import MukiAvatar from "../../assets/Muki_avatar.jpeg"
 
 const DUMMY_PROFILES = [
-  {id: "u1", name: "Max Voronov", profileImage: MaxAvatar, userName: "red"},
+  {
+    id: "u1",
+    name: "Max Voronov",
+    profileImage: MaxAvatar,
+    userName: "red",
+    posts: [
+      {
+        id: "p1",
+        caption: "kitty photo"
+      },
+      {
+        id: "p2",
+        caption: "coding"
+      },
+      {
+        id: "p3",
+        caption: "hello world"
+      },
+      {
+        id: "p4",
+        caption: "yes"
+      }
+    ]
+  },
   {
     id: "u2",
     name: "Michaela Voronov",
     profileImage: MichaelaAvatar,
-    userName: "syntaxcat"
+    userName: "syntaxcat",
+    posts: [
+      {
+        id: "p1",
+        caption: "Chilling & killing"
+      },
+      {
+        id: "p2",
+        caption: "Best day of my life"
+      },
+      {
+        id: "p3",
+        caption: "love my mama <3"
+      },
+      {
+        id: "p4",
+        caption: "another day another..."
+      }
+    ]
   },
   {
     id: "u3",
     name: "Puki Ben-Puki",
     profileImage: PukiAvatar,
-    userName: "poopoo"
+    userName: "poopoo",
+    posts: [
+      {
+        id: "p1",
+        caption: "bye bye"
+      },
+      {
+        id: "p2",
+        caption: "working hard or hardly working?"
+      },
+      {
+        id: "p3",
+        caption: "you know it"
+      },
+      {
+        id: "p4",
+        caption: "no"
+      }
+    ]
   },
   {
     id: "u4",
     name: "Muki Ben-Muki",
     profileImage: MukiAvatar,
-    userName: "muuumooo"
-  }
-]
-
-const DUMMY_POSTS = [
-  {
-    id: "p1",
-    caption: "Chilling & killing"
-  },
-  {
-    id: "p2",
-    caption: "Best day of my life"
-  },
-  {
-    id: "p3",
-    caption: "love my mama <3"
-  },
-  {
-    id: "p4",
-    caption: "another day another..."
+    userName: "muuumooo",
+    posts: [
+      {
+        id: "p1",
+        caption: "beaching"
+      },
+      {
+        id: "p2",
+        caption: "gyming"
+      },
+      {
+        id: "p3",
+        caption: "dancing"
+      },
+      {
+        id: "p4",
+        caption: "eating"
+      }
+    ]
   }
 ]
 
 const ProfilePage = () => {
-  const [posts, setPosts] = useState(DUMMY_POSTS)
   const [modalIsShown, setModalIsShown] = useState(false)
 
   let {userId} = useParams()
@@ -61,9 +118,11 @@ const ProfilePage = () => {
     return profile.userName === userId
   })
 
+  const [posts, setPosts] = useState(foundProfile.posts)
+
   const addPostHandler = (caption) => {
     const newPost = {
-      id: DUMMY_POSTS.length + 1,
+      id: `p${posts.length + 1}`,
       caption
     }
     setPosts((currentPosts) => {
