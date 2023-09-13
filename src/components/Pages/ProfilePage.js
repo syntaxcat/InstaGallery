@@ -9,16 +9,16 @@ import Posts from "../Posts/Posts"
 
 // localStorage.getItem("Profiles", JSON.stringify(DUMMY_PROFILES))
 
+const DB = JSON.parse(localStorage.getItem("Profiles"))
+
 const ProfilePage = () => {
   const [modalIsShown, setModalIsShown] = useState(false)
 
   let {userId} = useParams()
 
-  const foundProfile = JSON.parse(localStorage.getItem("Profiles")).find(
-    (profile) => {
-      return profile.userName === userId
-    }
-  )
+  const foundProfile = DB.find((profile) => {
+    return profile.userName === userId
+  })
 
   const [posts, setPosts] = useState(foundProfile.posts)
 
@@ -32,7 +32,7 @@ const ProfilePage = () => {
     })
     setModalIsShown(false)
 
-    const profiles = JSON.parse(localStorage.getItem("Profiles"))
+    const profiles = DB
     const profile = profiles.filter(
       (profile) => profile.id === foundProfile.id
     )[0]
@@ -43,7 +43,7 @@ const ProfilePage = () => {
   const deletePostHandler = (id) => {
     const newPosts = posts.filter((post) => post.id !== id)
     setPosts(newPosts)
-    const profiles = JSON.parse(localStorage.getItem("Profiles"))
+    const profiles = DB
     const profile = profiles.filter(
       (profile) => profile.id === foundProfile.id
     )[0]
@@ -68,6 +68,12 @@ const ProfilePage = () => {
       }
     })
     setPosts(newPosts)
+    const profiles = DB
+    const profile = profiles.filter(
+      (profile) => profile.id === foundProfile.id
+    )[0]
+    profile.posts = newPosts
+    localStorage.setItem("Profiles", JSON.stringify(profiles))
   }
   return (
     <div className={classes.profilePageSize}>
