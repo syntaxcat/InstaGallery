@@ -1,5 +1,6 @@
 .posts {
-  border-top: 1px solid black;
+  /* border-top: 1px solid lightgrey; */
+  border-top: 1px solid rgba(38, 38, 39, 1);
   display: flex;
 }
 

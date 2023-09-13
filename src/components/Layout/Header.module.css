@@ -1,5 +1,7 @@
 .header {
   display: flex;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .userName {
@@ -7,13 +9,16 @@
     Arial, sans-serif;
   font-size: 20px;
   font-weight: 400;
+  color: white;
 }
 
 .userInfo {
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 .contentInfo {
   margin-bottom: 20px;
+  color: white;
 }
