@@ -10,6 +10,9 @@ const Backdrop = (props) => {
 const ModalOverlay = (props) => {
   return (
     <div className={classes.modal}>
+      <div className={classes.ModalHeading}>
+        <h1>Create new post</h1>
+      </div>
       <div className={classes.content}>{props.children}</div>
     </div>
   )

@@ -22,7 +22,7 @@ const PostItem = (props) => {
         />
       ) : (
         <>
-          <div>{props.caption}</div>
+          <div className={classes.captionText}>{props.caption}</div>
           <button onClick={editPostHandler}>Edit</button>
         </>
       )}

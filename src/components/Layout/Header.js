@@ -13,7 +13,10 @@ const Header = (props) => {
       </Card>
       <div className={classes.userInfo}>
         <h1 className={classes.userName}>{userName}</h1>
-        <div className={classes.contentInfo}>{props.postsCount} posts</div>
+        <div className={classes.contentInfo}>
+          <span className={classes.NumOfPosts}>{props.postsCount}</span>
+          &nbsp;posts
+        </div>
         <div>{name}</div>
         <div>{props.foundProfile.bio}</div>
       </div>
