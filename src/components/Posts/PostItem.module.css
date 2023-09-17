@@ -13,5 +13,41 @@
 
 .postItemActions {
   display: flex;
-  /* flex-direction: row; */
+  flex-direction: column;
+}
+
+.postItemActions li {
+  display: flex;
+  color: white;
+  margin: 0 auto;
+  justify-content: center;
+  border-bottom: 1px solid #363636;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.postItemModal {
+  display: flex;
+}
+
+.btnActionsMenu {
+  background-color: black;
+  border: none;
+  height: 24px;
+  cursor: pointer;
+}
+
+.modalPostItem {
+  position: fixed;
+  top: 20vh;
+  left: 5%;
+  width: 40%;
+  background-color: black !important;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
 }

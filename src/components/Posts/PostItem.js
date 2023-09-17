@@ -2,10 +2,21 @@ import React, {Fragment, useState} from "react"
 import classes from "../Posts/PostItem.module.css"
 import EditPostItem from "./EditPostItem"
 import Modal from "../UI/Modal"
+import Actions from "../svg/Actions"
 
 const PostItem = (props) => {
   const [isEditing, setIsEditing] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const [modalActionsIsShown, setModalActionsIsShown] = useState(false)
+
+  const showModalActionsHandler = () => {
+    setModalActionsIsShown(true)
+  }
+
+  const hideModalActionsHandler = () => {
+    setModalActionsIsShown(false)
+  }
 
   const editPostHandler = () => {
     setIsEditing(true)
@@ -29,30 +40,46 @@ const PostItem = (props) => {
       </li>
 
       {isModalOpen && (
-        <Modal onHideModal={hideModalPostHandler}>
-          <div>
+        <Modal
+          className={classes.modalPostItem}
+          onHideModal={hideModalPostHandler}
+        >
+          <div className={classes.postItemModal}>
             <img
               className={classes.postImage}
               src="https://picsum.photos/300/300"
             />
-            <div className={classes.postItemActions}>
-              {isEditing ? (
-                <EditPostItem
-                  caption={props.caption}
-                  onEdit={(caption) => {
-                    props.onEditPost(caption)
-                    setIsEditing(false)
-                  }}
-                />
-              ) : (
-                <>
-                  <div className={classes.captionText}>{props.caption}</div>
-                  <button onClick={editPostHandler}>Edit</button>
-                </>
-              )}
+            <div className={classes.captionText}>{props.caption}</div>
 
-              <button onClick={props.onDeletePost}>Delete Post</button>
-            </div>
+            <button
+              className={classes.btnActionsMenu}
+              onClick={showModalActionsHandler}
+            >
+              <Actions />
+            </button>
+
+            {modalActionsIsShown && (
+              <Modal onHideModal={hideModalActionsHandler}>
+                <ul className={classes.postItemActions}>
+                  {isEditing ? (
+                    <EditPostItem
+                      caption={props.caption}
+                      onEdit={(caption) => {
+                        props.onEditPost(caption)
+                        setIsEditing(false)
+                      }}
+                    />
+                  ) : (
+                    <>
+                      <div className={classes.captionText}>{props.caption}</div>
+                      <li onClick={editPostHandler}>Edit</li>
+                    </>
+                  )}
+
+                  <li onClick={props.onDeletePost}>Delete Post</li>
+                </ul>
+              </Modal>
+            )}
           </div>
         </Modal>
       )}

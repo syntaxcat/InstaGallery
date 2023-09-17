@@ -1,6 +1,5 @@
 import {Fragment} from "react"
 import ReactDOM from "react-dom"
-
 import classes from "./Modal.module.css"
 
 const Backdrop = (props) => {
@@ -8,11 +7,16 @@ const Backdrop = (props) => {
 }
 
 const ModalOverlay = (props) => {
+  const modalPostItem = props.className ? `${props.className}` : " "
+  const modalClasses = `${modalPostItem} ${classes.modal}`
+
   return (
-    <div className={classes.modal}>
-      <div className={classes.ModalHeading}>
-        <h1>{props.title}</h1>
-      </div>
+    <div className={modalClasses}>
+      {props.title && (
+        <div className={classes.ModalHeading}>
+          <h1>{props.title}</h1>
+        </div>
+      )}
       <div className={classes.content}>{props.children}</div>
     </div>
   )
@@ -28,7 +32,9 @@ const Modal = (props) => {
         portalElement
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay title={props.title}>{props.children}</ModalOverlay>,
+        <ModalOverlay className={props.className} title={props.title}>
+          {props.children}
+        </ModalOverlay>,
         portalElement
       )}
     </Fragment>
