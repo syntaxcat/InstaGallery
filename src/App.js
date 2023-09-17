@@ -43,7 +43,11 @@ function AppContainer() {
         </button>
 
         {modalIsShown && (
-          <Modal title="Create new post" onHideModal={hideModalHandler}>
+          <Modal
+            modalCreate={classes.modalCreate}
+            title="Create new post"
+            onHideModal={hideModalHandler}
+          >
             <PostForm onAddPost={addPostHandler} />
           </Modal>
         )}

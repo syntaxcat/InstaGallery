@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import classes from "../../App.module.css"
 
 const PostForm = (props) => {
   const [caption, setCaption] = useState("")
@@ -19,8 +20,8 @@ const PostForm = (props) => {
   }
 
   return (
-    <form>
-      <input value={caption} onChange={onChangeHandler} />
+    <form className={classes.createPostForm}>
+      <input autoFocus value={caption} onChange={onChangeHandler} />
       <button onClick={submitHandler}>+ Add Post</button>
     </form>
   )
