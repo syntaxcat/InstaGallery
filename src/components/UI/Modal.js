@@ -7,8 +7,10 @@ const Backdrop = (props) => {
 }
 
 const ModalOverlay = (props) => {
+  console.log(props.modalActions)
+  const modalActions = props.modalActions ? `${props.modalActions}` : " "
   const modalPostItem = props.className ? `${props.className}` : " "
-  const modalClasses = `${modalPostItem} ${classes.modal}`
+  const modalClasses = `${classes.modal} ${modalPostItem} ${modalActions}`
 
   return (
     <div className={modalClasses}>
@@ -32,7 +34,11 @@ const Modal = (props) => {
         portalElement
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay className={props.className} title={props.title}>
+        <ModalOverlay
+          modalActions={props.modalActions}
+          className={props.className}
+          title={props.title}
+        >
           {props.children}
         </ModalOverlay>,
         portalElement

@@ -28,6 +28,7 @@ const PostItem = (props) => {
 
   const hideModalPostHandler = () => {
     setIsModalOpen(false)
+    setIsEditing(false)
   }
 
   return (
@@ -49,17 +50,21 @@ const PostItem = (props) => {
               className={classes.postImage}
               src="https://picsum.photos/300/300"
             />
-            <div className={classes.captionText}>{props.caption}</div>
-
-            <button
-              className={classes.btnActionsMenu}
-              onClick={showModalActionsHandler}
-            >
-              <Actions />
-            </button>
+            <div className={classes.postDetails}>
+              <button
+                className={classes.btnActionsMenu}
+                onClick={showModalActionsHandler}
+              >
+                <Actions />
+              </button>
+              <div className={classes.captionText}>{props.caption}</div>
+            </div>
 
             {modalActionsIsShown && (
-              <Modal onHideModal={hideModalActionsHandler}>
+              <Modal
+                modalActions={classes.modalPostItemActionsMenu}
+                onHideModal={hideModalActionsHandler}
+              >
                 <ul className={classes.postItemActions}>
                   {isEditing ? (
                     <EditPostItem
