@@ -3,9 +3,9 @@ import {Routes, Route, Outlet} from "react-router-dom"
 import ProfilePage from "./components/Pages/ProfilePage"
 import classes from "./App.module.css"
 import Logo from "./components/svg/Logo"
-import OpenModalButton from "./components/UI/OpenModalButton"
 import Modal from "./components/UI/Modal"
 import PostForm from "./components/Posts/PostForm"
+import Create from "./components/svg/Create"
 
 function AppContainer() {
   const [modalIsShown, setModalIsShown] = useState(false)
@@ -36,7 +36,12 @@ function AppContainer() {
     <div>
       <nav className={classes.sideNav}>
         <Logo />
-        <OpenModalButton onShowModal={showModalHandler} />
+
+        <button className={classes.btn} onClick={showModalHandler}>
+          <Create />
+          Create
+        </button>
+
         {modalIsShown && (
           <Modal title="Create new post" onHideModal={hideModalHandler}>
             <PostForm onAddPost={addPostHandler} />

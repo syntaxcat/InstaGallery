@@ -35,22 +35,24 @@ const PostItem = (props) => {
               className={classes.postImage}
               src="https://picsum.photos/300/300"
             />
-            {isEditing ? (
-              <EditPostItem
-                caption={props.caption}
-                onEdit={(caption) => {
-                  props.onEditPost(caption)
-                  setIsEditing(false)
-                }}
-              />
-            ) : (
-              <>
-                <div className={classes.captionText}>{props.caption}</div>
-                <button onClick={editPostHandler}>Edit</button>
-              </>
-            )}
+            <div className={classes.postItemActions}>
+              {isEditing ? (
+                <EditPostItem
+                  caption={props.caption}
+                  onEdit={(caption) => {
+                    props.onEditPost(caption)
+                    setIsEditing(false)
+                  }}
+                />
+              ) : (
+                <>
+                  <div className={classes.captionText}>{props.caption}</div>
+                  <button onClick={editPostHandler}>Edit</button>
+                </>
+              )}
 
-            <button onClick={props.onDeletePost}>Delete Post</button>
+              <button onClick={props.onDeletePost}>Delete Post</button>
+            </div>
           </div>
         </Modal>
       )}

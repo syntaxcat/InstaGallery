@@ -10,3 +10,8 @@
 .captionText {
   color: white;
 }
+
+.postItemActions {
+  display: flex;
+  /* flex-direction: row; */
+}
