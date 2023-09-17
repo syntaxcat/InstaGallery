@@ -17,8 +17,8 @@ const Header = (props) => {
           <span className={classes.NumOfPosts}>{props.postsCount}</span>
           &nbsp;posts
         </div>
-        <div>{name}</div>
-        <div>{props.foundProfile.bio}</div>
+        <div className={classes.nameText}>{name}</div>
+        <div className={classes.nameText}>{props.foundProfile.bio}</div>
       </div>
     </header>
   )

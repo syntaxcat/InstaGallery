@@ -11,7 +11,7 @@ const ModalOverlay = (props) => {
   return (
     <div className={classes.modal}>
       <div className={classes.ModalHeading}>
-        <h1>Create new post</h1>
+        <h1>{props.title}</h1>
       </div>
       <div className={classes.content}>{props.children}</div>
     </div>
@@ -28,7 +28,7 @@ const Modal = (props) => {
         portalElement
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay>{props.children}</ModalOverlay>,
+        <ModalOverlay title={props.title}>{props.children}</ModalOverlay>,
         portalElement
       )}
     </Fragment>

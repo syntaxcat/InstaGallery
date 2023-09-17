@@ -38,7 +38,7 @@ function AppContainer() {
         <Logo />
         <OpenModalButton onShowModal={showModalHandler} />
         {modalIsShown && (
-          <Modal onHideModal={hideModalHandler}>
+          <Modal title="Create new post" onHideModal={hideModalHandler}>
             <PostForm onAddPost={addPostHandler} />
           </Modal>
         )}

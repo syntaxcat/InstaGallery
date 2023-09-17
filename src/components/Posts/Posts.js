@@ -1,3 +1,4 @@
+import {useState} from "react"
 import classes from "../Posts/Posts.module.css"
 import PostItem from "./PostItem"
 
