@@ -14,12 +14,13 @@ const Posts = (props) => {
       key={post.id}
       id={post.id}
       caption={post.caption}
+      comments={post.comments}
     />
   ))
 
   return (
     <section className={classes.posts}>
-      <ul>{postsList}</ul>
+      <ul className={classes.postsUl}>{postsList}</ul>
     </section>
   )
 }

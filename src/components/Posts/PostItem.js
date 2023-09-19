@@ -5,6 +5,7 @@ import Modal from "../UI/Modal"
 import Actions from "../svg/Actions"
 
 const PostItem = (props) => {
+  console.log("props", props)
   const [isEditing, setIsEditing] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -31,6 +32,17 @@ const PostItem = (props) => {
     setIsEditing(false)
   }
 
+  const postComments = props.comments?.map((comment) => (
+    <li key={comment.id}>{comment.text}</li>
+  ))
+
+  const postCommentsLength = props.comments?.length
+
+  const displayCommentsLength = props.comments
+    ? `${classes.postCommentsNumDisplay}`
+    : " "
+  const displayCommentsClasses = `${classes.postCommentsNum} ${displayCommentsLength}`
+
   return (
     <>
       <li onClick={openModalPostHandler} className={classes.post}>
@@ -38,7 +50,9 @@ const PostItem = (props) => {
           className={classes.postImage}
           src="https://picsum.photos/300/300"
         />
-        {props.comments}
+        {postCommentsLength && (
+          <span className={displayCommentsClasses}>{postCommentsLength}</span>
+        )}
       </li>
 
       {isModalOpen && (
@@ -59,6 +73,7 @@ const PostItem = (props) => {
                 <Actions />
               </button>
               <div className={classes.captionText}>{props.caption}</div>
+              <ul className={classes.postComments}>{postComments}</ul>
             </div>
 
             {modalActionsIsShown && (
