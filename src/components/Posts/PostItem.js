@@ -38,6 +38,7 @@ const PostItem = (props) => {
           className={classes.postImage}
           src="https://picsum.photos/300/300"
         />
+        {props.comments}
       </li>
 
       {isModalOpen && (

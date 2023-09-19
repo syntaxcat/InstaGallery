@@ -4,8 +4,6 @@ import classes from "./ProfilePage.module.css"
 import Header from "../Layout/Header"
 import Posts from "../Posts/Posts"
 
-// localStorage.getItem("Profiles", JSON.stringify(DUMMY_PROFILES))
-
 const ProfilePage = () => {
   let {userId} = useParams()
 
@@ -44,6 +42,7 @@ const ProfilePage = () => {
     profile.posts = newPosts
     localStorage.setItem("Profiles", JSON.stringify(profiles))
   }
+
   return (
     <div className={classes.profilePageSize}>
       <Header postsCount={posts.length} foundProfile={foundProfile} />

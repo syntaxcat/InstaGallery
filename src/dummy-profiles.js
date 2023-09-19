@@ -3,7 +3,7 @@ import MichaelaAvatar from "./assets/Michaela_mochi_avatar.jpeg"
 import PukiAvatar from "./assets/Puki_avatar.avif"
 import MukiAvatar from "./assets/Muki_avatar.jpeg"
 
-const DUMMY_PROFILES = [
+export const DUMMY_PROFILES = [
   {
     id: "u1",
     name: "Max Voronov",
@@ -13,7 +13,17 @@ const DUMMY_PROFILES = [
     posts: [
       {
         id: "p1",
-        caption: "kitty photo"
+        caption: "kitty photo",
+        comments: [
+          {
+            id: "c1",
+            text: "Awesome pic!"
+          },
+          {
+            id: "c2",
+            text: "looking good #yay"
+          }
+        ]
       },
       {
         id: "p2",

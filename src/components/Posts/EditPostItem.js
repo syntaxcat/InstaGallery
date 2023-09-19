@@ -16,7 +16,12 @@ const EditPostItem = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <input type="text" onChange={setCaptionHandler} value={caption} />
+      <input
+        autoFocus
+        type="text"
+        onChange={setCaptionHandler}
+        value={caption}
+      />
       <button type="submit">Submit Edit</button>
     </form>
   )
